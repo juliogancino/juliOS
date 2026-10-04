@@ -13,15 +13,14 @@
 ### 1. Clonar o extraer proyecto
 
 ```bash
-cd /ruta/donde/clono/el/repositorio
-# El proyecto ya está en julios/
+git clone https://github.com/juliogancino/juliOS.git
 ```
 
 
 ### 2. Compilar el sistema
 
 ```bash
-cd julios
+cd juliOS
 ./scripts/build.sh
 ```
 
