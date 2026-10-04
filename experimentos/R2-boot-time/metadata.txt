@@ -1,0 +1,26 @@
+Experiment: R2 - Boot-to-login time
+Date: 2026-10-03
+System: juliOS
+Virtualization: QEMU
+Guest RAM allocation: 512 MB
+Kernel: Linux 6.1 custom juliOS kernel #6
+Boot method: QEMU direct kernel boot using -kernel and compressed initramfs
+Console: ttyS0 at 115200 baud
+Endpoint: automatic detection of the string "buildroot login:"
+Formal repetitions: 10
+Pilot run: performed and excluded from formal dataset
+Timing source: Ubuntu host wall-clock time
+Metric definition: elapsed time from QEMU process launch until detection of the Buildroot login prompt
+
+Results:
+n = 10
+mean = 12.037 s
+median = 12.150 s
+sample standard deviation = 0.888 s
+minimum = 10.570 s
+maximum = 13.181 s
+95% t-confidence interval for mean = 11.401 to 12.672 s
+
+Important:
+This measurement represents QEMU process-launch-to-login time.
+It must not be interpreted as kernel-only boot time.

@@ -1,0 +1,101 @@
+# ============================================================
+# juliOS - Public Research Artifact Repository
+# ============================================================
+
+# ------------------------------------------------------------
+# Buildroot source/build trees
+# ------------------------------------------------------------
+buildroot-2024.02/
+buildroot-2024.02-backup-*/
+buildroot-*.tar.gz
+
+# ------------------------------------------------------------
+# Linux source/build trees
+# ------------------------------------------------------------
+linux-6.1/
+linux-*.tar.xz
+backup-kernel/
+rootfs-gcc/
+
+# ------------------------------------------------------------
+# Historical/local backups
+# ------------------------------------------------------------
+baseline-historica-*/
+.gitignore.backup-*
+
+# ------------------------------------------------------------
+# Compiled objects and binaries
+# ------------------------------------------------------------
+*.o
+*.ko
+*.so
+*.a
+*.d
+*.mod.c
+*.order
+*.symvers
+.tmp_versions/
+
+test_syscall
+test_syscall_rootfs
+test_syscall_v2
+test_syscall_v3
+test_syscall_v4
+
+src/iaos_light/iaos_light
+src/iaos_client/iaos_client
+experimentos/E5-local-ai/test_cpp
+
+# ------------------------------------------------------------
+# Large generated OS / VM artifacts
+# ------------------------------------------------------------
+*.img
+*.qcow2
+*.vdi
+*.vmdk
+*.ext4
+*.cpio
+*.cpio.gz
+bzImage
+System.map
+
+# ------------------------------------------------------------
+# AI models
+# Models are documented by version/hash but not stored here.
+# ------------------------------------------------------------
+*.gguf
+
+# ------------------------------------------------------------
+# Third-party llama.cpp source/build tree
+# Exact upstream commit is documented separately.
+# ------------------------------------------------------------
+experimentos/E5-local-ai/llama.cpp/
+
+# ------------------------------------------------------------
+# Generated network benchmark payload
+# Reproducible 100 MiB test file; not required in repository.
+# ------------------------------------------------------------
+experimentos/R1-network/network_test_100MiB.bin
+
+# ------------------------------------------------------------
+# Generic logs
+# ------------------------------------------------------------
+*.log
+
+# R2 raw boot evidence is intentionally retained.
+!experimentos/R2-boot-time/boot_test.log
+
+# ------------------------------------------------------------
+# Temporary/editor/OS files
+# ------------------------------------------------------------
+*.tmp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ------------------------------------------------------------
+# Generated test root filesystems
+# ------------------------------------------------------------
+pruebas/rootfs-syscall-ttyS0/

@@ -1,0 +1,20 @@
+Experiment: R1 - Effective network throughput
+Date: 2026-10-03
+Direction: Ubuntu host -> juliOS guest
+Guest RAM allocation: 1024 MB
+Guest usable memory: 979 MB total reported by free -m
+Network: QEMU user-mode networking, e1000 virtual NIC
+Guest address: 10.0.2.15
+Host gateway/address visible to guest: 10.0.2.2
+Protocol: HTTP
+Server: Python http.server on Ubuntu host, port 8000
+Client: BusyBox wget in juliOS
+Payload: 100 MiB file
+Destination: /dev/null
+Formal repetitions: 10
+Warm-up transfer: performed and excluded
+Timing: /usr/bin/time elapsed wall-clock seconds
+
+Important:
+The e1000 message reporting 1000 Mbps Full Duplex represents nominal virtual link speed and is not measured application throughput.
+R1 measures effective HTTP download throughput from host to guest.

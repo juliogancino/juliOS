@@ -1,0 +1,11 @@
+# /etc/hosts para JuliOS
+127.0.0.1       localhost
+127.0.1.1       julios
+
+# Para Ollama en el host (si se usa red)
+# 192.168.122.1  host.local host
+
+# IPv6
+::1             localhost ip6-localhost ip6-loopback
+ff02::1         ip6-allnodes
+ff02::2         ip6-allrouters

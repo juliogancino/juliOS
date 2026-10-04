@@ -1,0 +1,2 @@
+run,return,errno,latency_ms,response,condition
+1,9,0,27135.156,JULIOS_OK,host_reboot_ollama_started_model_not_resident

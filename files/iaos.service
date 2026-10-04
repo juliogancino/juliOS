@@ -1,0 +1,29 @@
+[Unit]
+Description=JuliOS AI Service
+After=network.target ollama.service
+Requires=ollama.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/root/iaos_light -d
+Restart=always
+RestartSec=10
+
+# Environment
+Environment="OLLAMA_HOST=127.0.0.1:11434"
+Environment="IAOS_MODEL=minimax-m2.5:cloud"
+
+# Security
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

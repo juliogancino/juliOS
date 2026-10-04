@@ -1,0 +1,14 @@
+Experiment: E3 - Warm direct HTTP baseline
+Date: 2026-10-03
+Architecture: Ubuntu host -> HTTP loopback -> Ollama -> Qwen
+Endpoint: http://127.0.0.1:11434/api/generate
+Model: qwen2.5-coder:1.5b
+Prompt: Responde exactamente JULIOS_OK
+Stream: false
+Repetitions: 30
+Condition: model resident (warm)
+Successful exact responses: 30/30
+Timing: end-to-end HTTP wall time
+Additional metrics: Ollama total_duration, load_duration, prompt_eval_duration, eval_duration
+CSV columns: run,http_latency_ms,ollama_total_ms,load_ms,prompt_eval_ms,eval_ms,response
+Note: This experiment is a host-side HTTP architectural baseline. It does not isolate pure syscall overhead relative to E1 because E1 traverses the QEMU guest-to-host network path.

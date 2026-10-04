@@ -1,0 +1,53 @@
+#!/bin/sh
+# rcS - Script de inicio del sistema (init)
+# Este script se ejecuta al iniciar el sistema
+
+echo "========================================="
+echo "  JuliOS - Iniciando sistema"
+echo "========================================="
+
+# Montar sistemas de archivos esenciales
+echo "[*] Montando sistemas de archivos..."
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devpts none /dev/pts
+
+# Habilitar swap
+echo "[*] Configurando memoria swap..."
+swapon -a 2>/dev/null || true
+
+# Configurar red
+echo "[*] Configurando red..."
+ifconfig lo up 127.0.0.1
+
+# Configurar hostname
+echo "julios" > /proc/sys/kernel/hostname
+
+# Mensaje del día
+echo ""
+echo "========================================="
+echo "  JuliOS v1.0 - Sistema con IA"
+echo "========================================="
+echo ""
+echo " kernel: $(uname -r)"
+echo " hostname: $(hostname)"
+echo " fecha: $(date)"
+echo ""
+
+# Iniciar servicio IAOS
+echo "[*] Iniciando IAOS..."
+if [ -x /root/iaos_light ]; then
+    cd /root
+    ./iaos_light -d &
+    echo "    iaos_light iniciado"
+else
+    echo "    iaos_light no encontrado"
+fi
+
+# Iniciar Getty (consola)
+echo "[*] Iniciando consola..."
+exec /sbin/getty -L tty1 115200 vt100
+
+# Si llega aquí, algo falló
+echo "[!] Error en init"
+exec /bin/sh

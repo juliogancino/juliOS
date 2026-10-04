@@ -1,0 +1,35 @@
+Experiment: E1 - Warm syscall end-to-end latency
+Project: juliOS
+Date: 2026-09-30
+
+Architecture:
+juliOS guest -> custom syscall 451 -> kernel TCP/HTTP -> host Ollama -> AI model
+
+Guest:
+Kernel: Linux 6.1.0 #6
+Guest RAM: 512 MB
+Environment: Buildroot
+Syscall: 451 (ia_send)
+
+AI:
+Runtime: Ollama
+Model: qwen2.5-coder:1.5b
+Inference location: Ubuntu host
+Prompt: Responde exactamente JULIOS_OK
+Expected response: JULIOS_OK
+
+Measurement:
+Instrument: test_syscall_v4
+Clock: CLOCK_MONOTONIC
+Repetitions: 30
+Condition: warm model
+Metric: end-to-end syscall latency in milliseconds
+
+Results:
+Successful calls: 30/30
+Success rate: 100%
+CSV SHA256: a54b99a620caa9cb355d068c0a6151e67e5a3c6aeafa9541403e91865a5d090e
+
+Notes:
+Run 23 recorded 2142.878 ms and is retained in the original dataset.
+No observations were removed from the raw dataset.

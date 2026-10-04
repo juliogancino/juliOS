@@ -1,0 +1,20 @@
+# /etc/fstab para JuliOS
+# Sistema de archivos puntos de montaje
+
+# Rootfs
+/dev/root	/	ext4	defaults	0	1
+
+# Proc
+proc		/proc	proc	defaults	0	0
+
+# Sys
+sysfs		/sys	sysfs	defaults	0	0
+
+# Devpts
+devpts		/dev/pts	devpts	defaults	0	0
+
+# tmpfs para /tmp
+tmpfs		/tmp	tmpfs	defaults	0	0
+
+# tmpfs para /run
+tmpfs		/run	tmpfs	defaults	0	0

@@ -1,0 +1,33 @@
+Experiment: E4 - Guest RAM variants
+Date: 2026-10-03
+
+Architecture:
+JulioOS guest -> custom syscall 451 -> kernel TCP/HTTP -> QEMU user network -> Ubuntu host -> Ollama -> Qwen
+
+Kernel: Linux 6.1 custom juliOS kernel #6
+Syscall: 451 (ia_send)
+Model: qwen2.5-coder:1.5b
+Prompt: Responde exactamente JULIOS_OK
+Stream: false
+Guest network: QEMU user networking
+Ollama location: Ubuntu host
+AI model location: Ubuntu host
+Condition: warm model
+Repetitions per RAM configuration: 30
+
+RAM configurations:
+256 MB QEMU allocation; 224 MB reported usable by guest
+512 MB QEMU allocation; 475 MB reported usable by guest
+1024 MB QEMU allocation; 979 MB total and 899 MB available reported by guest
+
+Results:
+256 MB: syscall transport success 30/30; exact JULIOS_OK 28/30
+512 MB: syscall transport success 30/30; exact JULIOS_OK 30/30
+1024 MB: syscall transport success 30/30; exact JULIOS_OK 27/30
+
+Important interpretation:
+The LLM executes on the Ubuntu host, not inside the juliOS guest.
+Therefore this experiment evaluates robustness and end-to-end latency of the hybrid architecture under different guest RAM allocations.
+It does not measure the memory requirement of an LLM executing inside juliOS.
+
+All observations are retained, including non-exact model responses and latency outliers.

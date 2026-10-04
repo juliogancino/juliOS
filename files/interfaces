@@ -1,0 +1,19 @@
+# Configuración de red para JuliOS
+# Este archivo se copia a /etc/network/interfaces en el rootfs
+
+# Loopback
+auto lo
+iface lo inet loopback
+
+# Ethernet (DHCP)
+auto eth0
+iface eth0 inet dhcp
+    # DNS para la VM
+    dns-nameservers 8.8.8.8 8.8.4.4
+
+# IP estática alternativa (descomentar si se necesita)
+# iface eth0 inet static
+#     address 192.168.122.50
+#     netmask 255.255.255.0
+#     gateway 192.168.122.1
+#     dns-nameservers 8.8.8.8
