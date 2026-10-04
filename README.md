@@ -1,15 +1,33 @@
-# JuliOS - Sistema Operativo con IA en el Kernel
+# juliOS
 
-## Descripción
+## Kernel-Mediated Hybrid and Local CPU-Only AI Inference in a Resource-Constrained Minimalist Linux System
 
-JuliOS es un proyecto de investigación que busca implementar un sistema operativo con integración de IA autónoma en el kernel. El objetivo principal es demostrar el comportamiento de un SO que incluye una IA capaz de tomar decisiones de forma autónoma.
+**juliOS** is an experimental research platform for studying AI inference integration in a resource-constrained minimalist Linux environment.
 
-## Características Principales
+The project evaluates two AI execution strategies:
 
-- **Kernel:** Linux 6.1 (Buildroot minimal)
-- **IA:** Ollama con modelo ligero offline
-- **Arquitectura:** x86_64
-- **Código:** Español, minimalista, bien comentado
+1. **Kernel-mediated hybrid inference:** a juliOS application uses the experimental `ia_send` and `ia_recv` system calls to communicate through the kernel with host-side AI inference.
+2. **Local CPU-only inference:** a compact quantized model executes inside the juliOS guest using `llama.cpp`.
+
+### Experimental platform
+
+- Architecture: x86_64
+- Linux kernel: 6.1 series
+- Buildroot: 2024.02
+- Virtualization: QEMU
+- Hybrid model: Qwen2.5-Coder 1.5B through Ollama
+- Local model: SmolLM2-135M-Instruct Q4_K_M
+
+> juliOS is an experimental research platform, not a production-ready AI operating system.
+
+### Experimental ABI
+
+The hybrid prototype uses:
+
+- `ia_send`: syscall **451**
+- `ia_recv`: syscall **452**
+
+These numbers are assignments of the **experimental juliOS ABI** used in this research. They are not proposed as permanent upstream Linux syscall numbers.
 
 ## Estructura del Proyecto
 
